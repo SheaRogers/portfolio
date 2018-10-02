@@ -1,4 +1,4 @@
-# shearogers
+# Shea Rogers - Portfolio
 
 > The portfolio for Shea Rogers.
 

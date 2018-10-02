@@ -35,7 +35,6 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-    "nuxt-typescript",
     // Doc: https://bootstrap-vue.js.org/docs/
     ['bootstrap-vue/nuxt', { css: false }],
     [
