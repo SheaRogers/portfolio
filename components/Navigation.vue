@@ -1,7 +1,7 @@
 <template>
   <b-navbar 
-    :variant="getTheme[3] ? 'white' :'dark'"
-    :type="getTheme[3] ? 'light' :'dark'"
+    :variant="getTheme.isDark ? 'white' :'dark'"
+    :type="getTheme.isDark ? 'light' :'dark'"
     toggleable="md" 
     class="sticky-top">
 
@@ -16,12 +16,12 @@
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
         <b-nav-item-dropdown 
-          :text="getTheme[0]" 
+          :text="$store.state.theme" 
           right>
           <b-dropdown-item 
             v-for="(theme, key) in getThemes" 
             :key="key" 
-            @click="changeTheme(theme[0])">{{ theme[0] }}</b-dropdown-item>
+            @click="changeTheme(key)">{{ key }}</b-dropdown-item>
         </b-nav-item-dropdown>
 
         <a 

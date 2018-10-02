@@ -21,7 +21,8 @@
     "bootstrap-vue": "^2.0.0-beta",
     "cross-env": "^5.2.0",
     "nuxt": "^2.0.0",
-    "nuxt-fontawesome": "^0.3.0"
+    "nuxt-fontawesome": "^0.3.0",
+    "vuex-persist": "^1.7.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",

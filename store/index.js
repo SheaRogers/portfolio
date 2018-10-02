@@ -1,20 +1,23 @@
 import Vuex from 'vuex'
+import VuexPersistence from 'vuex-persist'
 
 import mutations from './mutations'
 
-import * as commands from '~/assets/commands/index.js'
-
 import themes from '~/assets/themes.json'
+
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage
+})
 
 const createStore = () => {
   return new Vuex.Store({
     state: {
       theme: 'One Dark',
       themeData: themes['One Dark'],
-      availableThemes: themes,
-      commands: commands
+      availableThemes: themes
     },
-    mutations
+    mutations,
+    plugins: [vuexLocal.plugin]
   })
 }
 

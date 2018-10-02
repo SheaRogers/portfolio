@@ -3,7 +3,7 @@
     fluid
     class="console">
     <div
-      :style="'background: ' + themeData[2] + ' !important;'" 
+      :style="'background: ' + themeData.background + ' !important;'" 
       class="main-background"/>
     <b-row 
       class="content-row" 
@@ -14,9 +14,9 @@
           :key="index">
           <a 
             v-if="line.isUser"
-            :style="'color: ' + themeData[1] + ' !important;'"
+            :style="'color: ' + themeData.primary + ' !important;'"
             class="dir">C:\{{ currDir }}></a>
-          <a :class="themeData[3] ? 'console-text text-light' :'console-text text-dark'">{{ line.content }}</a>
+          <a :class="themeData.isDark ? 'console-text text-light' :'console-text text-dark'">{{ line.content }}</a>
         </li>
       </ul>
     </b-row>
@@ -24,12 +24,12 @@
       class="type-row console-text"
       no-gutters>
       <a 
-        :style="'color: ' + themeData[1] + ' !important;'"
+        :style="'color: ' + themeData.primary + ' !important;'"
         class="dir">C:\{{ currDir }}></a>
       <div class="type-input">
         <input
           v-model="userInput"
-          :class="themeData[3] ? 'type-input text-light' :'type-input text-dark'"
+          :class="themeData.isDark ? 'type-input text-light' :'type-input text-dark'"
           type="text"
           autofocus="true"
           @keypress.enter="handleInput">
@@ -44,9 +44,6 @@ import { mapState } from 'vuex'
 import evaluate from '~/commands/evaluate.js'
 
 export default {
-  fetch({ store }) {
-    store.commit('changeTheme')
-  },
   data() {
     return {
       lines: [
@@ -63,9 +60,6 @@ export default {
   },
   computed: mapState(['themeData']),
   methods: {
-    changeTheme() {
-      this.$store.commit('update', this.theme)
-    },
     handleInput() {
       let name = ''
       let args = ''
@@ -76,11 +70,11 @@ export default {
         name = this.userInput
         args = ''
       }
-      this.evalCommand(name, args)
       this.lines.push({
         content: this.userInput,
         isUser: true
       })
+      this.evalCommand(name, args)
       this.userInput = ''
     },
     evalCommand(name, input) {
@@ -96,9 +90,10 @@ export default {
       this.lines = []
     },
     printCommand(command) {
+      console.log(command)
       for (let i = 0; i < command.lines.length; i++) {
         this.lines.push({
-          content: help.lines[i],
+          content: command.lines[i],
           isUser: false
         })
       }

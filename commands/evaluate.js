@@ -8,7 +8,7 @@ export default {
     }
   },
   help: function(input) {
-    if (input) {
+    if (input !== '') {
       return help.getCmdHelp(input)
     } else {
       return help.getAllHelp()
