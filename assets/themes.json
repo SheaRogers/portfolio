@@ -1,0 +1,14 @@
+{
+    "One Dark": [
+        "One Dark",
+        "#68AF66",
+        "#282C34",
+        true
+    ],
+    "One Light": [
+        "One Light",
+        "#68AF66",
+        "#fafafa",
+        false
+    ]
+}
